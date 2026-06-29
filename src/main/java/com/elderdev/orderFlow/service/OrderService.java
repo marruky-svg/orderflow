@@ -22,6 +22,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
     private final ProductRepository productRepository;
+    private final InvoiceService invoiceService;
 
     public List<Order> findAll() {
         return orderRepository.findAll();
@@ -46,7 +47,7 @@ public class OrderService {
 
         order.setStatus(status);
         if(order.getStatus().equals(OrderStatus.DELIVERED)) {
-            //invoiceService.generate(order);
+            invoiceService.generate(order);
         }
         return orderRepository.save(order);
     }
@@ -116,5 +117,4 @@ public class OrderService {
         order.setShippingAddress(shippingAddress);
         return orderRepository.save(order);
     }
-
 }
