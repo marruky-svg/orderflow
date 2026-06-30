@@ -30,7 +30,7 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SupplierResponse> selectById(@PathVariable @Valid Long id) {
+    public ResponseEntity<SupplierResponse> selectById(@PathVariable Long id) {
          var supplier = supplierService.findById(id);
          return ResponseEntity.ok(toResponse(supplier));
     }
@@ -69,6 +69,7 @@ public class SupplierController {
     private SupplierResponse toResponse(Supplier supplier){
         return new SupplierResponse
                 (
+                        supplier.getId(),
                         supplier.getName(),
                         supplier.getEmail(),
                         supplier.getPhone(),
