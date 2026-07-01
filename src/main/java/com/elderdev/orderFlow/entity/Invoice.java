@@ -20,7 +20,8 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "order")
+    @OneToOne()
+    @JoinColumn(name = "order_id", nullable = false, unique = true)
     private Order order;
     @Column(nullable = false, unique = true)
     private String invoiceNumber;
