@@ -43,7 +43,6 @@ public class PaymentController {
         return ResponseEntity.noContent().build();
     }
 
-
     private PaymentResponse toResponse(Payment payment) {
         return new PaymentResponse(
                 payment.getId(),
